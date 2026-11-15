@@ -1,0 +1,45 @@
+# Mohammad Azhdari — V-CodeSmith
+
+> Mohammad Azhdari (online as V-CodeSmith) is a fullstack developer based in Ardabil, Iran, with a frontend specialty. He builds production platforms with Vue 3 and Nuxt 4 on the front, Laravel and PHP on the back, and four years of shipping work behind him. Member of the Kowshan studio.
+
+He works remote-first from Ardabil, Iran, alongside a small product team, and takes on contract and freelance work. This site is a single-page portfolio: the canonical URL is https://v-codesmith.github.io/ and everything below is an anchor on that page.
+
+## Profile
+
+- [About](https://v-codesmith.github.io/#about): Fullstack developer with a frontend specialty — Vue 3, Nuxt 4, TypeScript, Laravel and PHP. Production platforms, not demos.
+- [How he writes code](https://v-codesmith.github.io/#approach): Plain CSS, few dependencies, one visual identity per project. Solo by default; takes the frontend in pairs.
+- [Process](https://v-codesmith.github.io/#process): Eight rules on every project — style, motion, security, structure, version control, docs, DevOps and explicit loading, error, empty and success states.
+- [How he uses AI](https://v-codesmith.github.io/#ai): As a tool, not a teammate. Ideas, repetitive CSS and replacing manual search; every output is reviewed before it ships.
+
+## Projects
+
+- [Karan](https://karanim.ir/): Project and task management platform for organisations — the full lifecycle from planning to monitoring and final evaluation, with individual and team task organisation and shared progress tracking. Main app in Vue 3, production and plan sites in Blade.
+- [Scan Business](https://scanbusiness.ir/): Business diagnostics and renewal platform backed by the Ministry of Industry, Mine and Trade. Free initial diagnosis plus detailed assessments against EFQM, BPMM, APQC and Palladium maturity models, scoped by headcount, assets and annual sales.
+- [NIGC](https://crm.nigc-ar.ir/): Three independent Vue applications for the National Iranian Gas Company — a staff CRM, a field-operations PWA (https://es.nigc-ar.ir/pwa2) and the reward-based Gaziom app. Each has its own visual identity, realtime photo capture for tasks and animated interfaces.
+- Cafe Mahour: Reservation-first platform for a cafe designed around consultants and brokers — table bookings with bundled packages, a full restaurant flow and a two-level admin. Private deployment.
+- Baam: Professional qualification platform for inspectors, evaluators and auditors, built with Nuxt 4. Resume builder, job selection, automatic per-role skill-gap analysis and suggested assessments, courses and reading. In development.
+- [Asayroom](https://asayroom.ir): National therapy platform (Vue 3 + Nuxt 4) for psychology, psychiatry and counselling. Multilingual, in-person and online, with video and image verification, four-level nested article categories, training and consulting packages, assessments, in-app wallets and payment gateways, and case-history meeting flows.
+
+## Stack
+
+- Primary: Vue 3, Nuxt 4, Laravel, PHP, TypeScript, JavaScript, CSS.
+- Also used: Blade, Python, Django, Vite, Tailwind, GSAP, SQL.
+- Systems: Linux, Git, GitHub Actions, Cloudflare Pages, Cloudflare Workers.
+- Practice: design systems, accessibility, web performance, responsive layout, form and state design, web application security.
+
+## Open source
+
+- [Kowshan UI Kit](https://kowshan-ui-kit.pages.dev/): Open UI kit of components and utilities built by Kowshan.
+
+## Contact
+
+- [Contact section](https://v-codesmith.github.io/#contact): Email is fastest, Telegram works too.
+- Email: mohammad.ajdari.2002@gmail.com
+- GitHub: https://github.com/V-CodeSmith
+- Telegram: https://t.me/mamadx008
+- Instagram: https://instagram.com/mohammad_azhdari81
+
+## Optional
+
+- [Sitemap](https://v-codesmith.github.io/sitemap.xml)
+- [Structured data](https://v-codesmith.github.io/): Person, Organization, WebSite, ProfilePage and BreadcrumbList JSON-LD are embedded in the homepage.

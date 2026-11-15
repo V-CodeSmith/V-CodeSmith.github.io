@@ -1,0 +1,21 @@
+/* TEAM */
+    Developer: Mohammad Azhdari (V-CodeSmith)
+    Contact: mohammad.ajdari.2002@gmail.com
+    Telegram: https://t.me/mamadx008
+    GitHub: https://github.com/V-CodeSmith
+    Instagram: https://instagram.com/mohammad_azhdari81
+    From: Ardabil, Iran
+    Studio: Kowshan — three developers, one designer
+
+/* SITE */
+    Last update: 2026-11-15
+    Language: English
+    Doctype: HTML5
+    Standards: HTML5, CSS3, ECMAScript 2022, WAI-ARIA landmarks
+    Components: Nuxt 4, Vue 3, plain CSS (no UI framework, no CSS framework)
+    Typeface: Bricolage Grotesque with Inter
+    Design: Warm paper, one ink, one electric accent, soft squircle cards
+    Software: VS Code, Git, Linux
+
+/* THANKS */
+    Everyone who filed an issue on one of my repositories.

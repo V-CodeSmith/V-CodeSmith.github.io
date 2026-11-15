@@ -1,0 +1,4 @@
+Contact: mailto:mohammad.ajdari.2002@gmail.com
+Expires: 2027-11-15T00:00:00.000Z
+Preferred-Languages: en, fa
+Canonical: https://v-codesmith.github.io/.well-known/security.txt

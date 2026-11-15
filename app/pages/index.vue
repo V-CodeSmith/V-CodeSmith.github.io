@@ -1,0 +1,1064 @@
+<template>
+  <div class="page">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <main id="main">
+      <section class="hero container">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true" />
+            Fullstack developer · Frontend specialty
+          </p>
+
+          <h1 class="hero-name display">
+            Mohammad
+            <span class="hero-name-last">
+              Azhdari<span class="dot-accent">.</span>
+            </span>
+          </h1>
+
+          <p class="hero-lede">
+            I build and maintain production interfaces: design systems, role-heavy
+            dashboards and multilingual sites that have to stay fast after launch.
+            Vue 3 and Nuxt 4 up front, Laravel behind, remote-first from Ardabil, Iran.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="#contact">Start a conversation →</a>
+            <a
+              class="btn btn--ghost"
+              :href="SITE.github"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-aside" data-reveal style="--delay: 120ms">
+          <div class="hero-card">
+            <p class="mono mono--muted">Currently</p>
+            <p>
+              Fullstack in a small product team. Vue, Nuxt and Laravel, remote from
+              Ardabil.
+            </p>
+            <div class="hero-card-meta">
+              <span>GMT+3:30</span>
+              <span>Remote-first</span>
+            </div>
+          </div>
+
+          <div class="hero-mark" aria-hidden="true">
+            <span class="hero-mark-glyph">MA</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="stack-strip" aria-label="Main stack">
+        <div class="container stack-strip-inner">
+          <p class="mono mono--muted stack-strip-label">Main stack</p>
+          <ul class="stack-list">
+            <li v-for="(item, index) in MAIN_STACK" :key="item.name" class="stack-item">
+              <span class="mono stack-index">{{ String(index + 1).padStart(2, '0') }}</span>
+              <span class="stack-name">{{ item.name }}</span>
+              <span class="stack-note">{{ item.note }}</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="about" class="section container">
+        <div class="section-grid">
+          <div data-reveal>
+            <p class="eyebrow">
+              <span class="eyebrow-dot" aria-hidden="true" />
+              Who I am
+            </p>
+            <h2 class="h2 display">Fullstack, close to the product.</h2>
+
+            <div class="prose">
+              <p>
+                I'm Mohammad Azhdari, known online as V-CodeSmith. Fullstack developer with a
+                frontend specialty: Vue 3, Nuxt 4 and TypeScript in the browser, Laravel and
+                PHP on the server, and a stubborn dislike of interfaces that look like a
+                template.
+              </p>
+              <p>
+                Most of what I build is production, not demo: therapy platforms, internal
+                tooling for a national gas company, reservation systems. Screens with
+                roles, permissions, state and edge cases that all have to behave on a slow
+                connection.
+              </p>
+              <p>
+                I care about structure, motion with a reason, and the states people forget
+                to design: loading, empty, error, success. I don't claim every corner of
+                the language — I know enough to ship real work with it, and I keep
+                learning on the job.
+              </p>
+            </div>
+          </div>
+
+          <aside class="glance" data-reveal style="--delay: 100ms">
+            <p class="mono mono--muted">At a glance</p>
+            <dl class="glance-list">
+              <div v-for="row in AT_A_GLANCE" :key="row.label" class="glance-row">
+                <dt>{{ row.label }}</dt>
+                <dd>{{ row.value }}</dd>
+              </div>
+            </dl>
+            <p class="glance-note">
+              Open to contract and freelance fullstack work alongside my current role.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="approach" class="section container">
+        <div class="approach-grid">
+          <div class="approach-lead" data-reveal>
+            <p class="mono">Style</p>
+            <h2 class="h2 display">How I write.</h2>
+            <p class="approach-lead-text">{{ APPROACH.lead }}</p>
+          </div>
+
+          <div class="approach-body" data-reveal style="--delay: 100ms">
+            <p v-for="paragraph in APPROACH.body" :key="paragraph">{{ paragraph }}</p>
+            <ul class="rules">
+              <li v-for="(rule, index) in APPROACH.rules" :key="rule">
+                <span class="mono">{{ String(index + 1).padStart(2, '0') }}</span>
+                <span>{{ rule }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="section container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true" />
+            Process
+          </p>
+          <h2 class="h2 display">Eight rules, every project.</h2>
+          <p class="section-lede">Unless you would rather I skipped them.</p>
+        </header>
+
+        <ul class="process-grid">
+          <li
+            v-for="(item, index) in PROCESS"
+            :key="item.title"
+            class="process-card"
+            :class="`process-card--${item.tone}`"
+            data-reveal
+            :style="{ '--delay': `${(index % 3) * 70}ms` }"
+          >
+            <span class="mono process-index">{{ String(index + 1).padStart(2, '0') }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="projects" class="section container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true" />
+            Selected work
+          </p>
+          <h2 class="h2 display">Things I've built.</h2>
+          <p class="section-lede">
+            Production platforms, internal tools and systems that had to keep working.
+            Some public, some behind closed doors.
+          </p>
+        </header>
+
+        <div class="project-list">
+          <article
+            v-for="(project, index) in PROJECTS"
+            :key="project.name"
+            class="project"
+            :style="{ background: project.tint }"
+            data-reveal
+          >
+            <div class="project-main">
+              <div class="project-top">
+                <span class="mono">{{ String(index + 1).padStart(2, '0') }}</span>
+                <span class="project-year">{{ project.year }}</span>
+              </div>
+
+              <h3 class="project-name display">{{ project.name }}</h3>
+              <p class="project-kind mono">{{ project.kind }}</p>
+              <p class="project-summary">{{ project.summary }}</p>
+
+              <ul class="project-features">
+                <li v-for="feature in project.features" :key="feature">{{ feature }}</li>
+              </ul>
+
+              <div class="project-actions">
+                <a
+                  v-for="link in project.links"
+                  :key="link.href"
+                  class="btn btn--dark"
+                  :href="link.href"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ link.label }} ↗
+                </a>
+                <span v-if="project.status" class="pill">{{ project.status }}</span>
+              </div>
+            </div>
+
+            <div class="project-side">
+              <ul class="project-stack" aria-label="Stack">
+                <li v-for="tech in project.stack" :key="tech" class="chip">{{ tech }}</li>
+              </ul>
+              <span class="project-monogram" aria-hidden="true">{{ project.monogram }}</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="stack" class="section container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true" />
+            Toolbox
+          </p>
+          <h2 class="h2 display">Things I've touched.</h2>
+          <p class="section-lede">
+            Not a skills scoreboard. Tools and ideas I've crossed paths with, some
+            deeply, some only enough to know what they are.
+          </p>
+        </header>
+
+        <div class="skill-grid">
+          <div
+            v-for="group in SKILL_GROUPS"
+            :key="group.label"
+            class="skill-group"
+            data-reveal
+          >
+            <p class="mono mono--muted">{{ group.label }}</p>
+            <ul class="chip-list">
+              <li v-for="item in group.items" :key="item" class="chip">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai" class="section container">
+        <div class="ai-band" data-reveal>
+          <p class="eyebrow eyebrow--invert">
+            <span class="eyebrow-dot" aria-hidden="true" />
+            How I use AI
+          </p>
+          <h2 class="h2 display">A tool, not a teammate<span class="dot-accent">.</span></h2>
+          <p class="ai-band-text">
+            It handles the boring parts and I keep the decisions. Anything I plan to
+            maintain, I write myself: the structure, the base, the calls.
+          </p>
+        </div>
+
+        <ul class="ai-grid">
+          <li
+            v-for="(note, index) in AI_NOTES"
+            :key="note.title"
+            class="ai-card"
+            data-reveal
+            :style="{ '--delay': `${index * 60}ms` }"
+          >
+            <span class="mono mono--muted">{{ note.label }}</span>
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.body }}</p>
+          </li>
+        </ul>
+
+        <p class="ai-foot" data-reveal>
+          Every output gets read before it ships. When it is wrong, I am the fallback.
+        </p>
+      </section>
+
+      <section id="contact" class="section container">
+        <div class="contact" data-reveal>
+          <div>
+            <p class="eyebrow">
+              <span class="eyebrow-dot" aria-hidden="true" />
+              Contact
+            </p>
+            <h2 class="contact-title display">
+              Let's make something worth looking at<span class="dot-accent">.</span>
+            </h2>
+            <p class="contact-lede">
+              Fullstack work, frontend or both. Email is fastest; I answer
+              everything.
+            </p>
+          </div>
+
+          <div class="contact-actions">
+            <a class="contact-email" :href="`mailto:${CONTACT.email}`">
+              {{ CONTACT.email }}
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <ul class="social-list">
+              <li v-for="social in CONTACT.socials" :key="social.label">
+                <a :href="social.href" target="_blank" rel="noopener noreferrer">
+                  <span>{{ social.label }}</span>
+                  <span class="mono">{{ social.handle }}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</template>
+
+<script setup lang="ts">
+import {
+  AI_NOTES,
+  APPROACH,
+  AT_A_GLANCE,
+  CONTACT,
+  MAIN_STACK,
+  PROCESS,
+  PROJECTS,
+  SKILL_GROUPS
+} from '~/constants/content'
+import { SITE } from '~/constants/seo'
+
+definePageMeta({
+  name: 'home',
+  layout: 'default'
+})
+
+useReveal()
+</script>
+
+<style scoped>
+/* ---------- Hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.5fr);
+  align-items: end;
+  gap: clamp(32px, 5vw, 72px);
+  padding-top: clamp(60px, 9vw, 112px);
+  padding-bottom: clamp(44px, 6vw, 76px);
+}
+
+.hero-name {
+  margin-top: 26px;
+  font-size: clamp(3rem, 8.6vw, 7rem);
+  letter-spacing: -0.05em;
+}
+
+.hero-name-last {
+  display: block;
+  padding-left: clamp(0px, 6vw, 84px);
+}
+
+.hero-lede {
+  margin-top: 28px;
+  max-width: 52ch;
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 34px;
+}
+
+.hero-aside {
+  display: grid;
+  gap: 14px;
+  padding-bottom: 6px;
+}
+
+.hero-card {
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  corner-shape: squircle;
+  background: var(--paper-raised);
+  font-size: 0.9rem;
+}
+
+.hero-card > p:not(.mono) {
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.hero-card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.hero-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  corner-shape: squircle;
+  background: radial-gradient(120% 130% at 18% 15%, #dfe2ff 0%, #f3f0ea 55%, #e9e3d7 100%);
+}
+
+.hero-mark::after {
+  content: '';
+  position: absolute;
+  inset: 16%;
+  border: 1px dashed rgba(47, 59, 255, 0.32);
+  border-radius: 50%;
+}
+
+.hero-mark-glyph {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  color: var(--accent);
+}
+
+/* ---------- Stack strip ---------- */
+
+.stack-strip {
+  border-block: 1px solid var(--line);
+  background: var(--paper-raised);
+}
+
+.stack-strip-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-block: 20px;
+}
+
+.stack-strip-label {
+  flex: none;
+  font-size: 0.64rem;
+}
+
+.stack-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  flex: 1;
+}
+
+.stack-item {
+  display: grid;
+  gap: 1px;
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+}
+
+.stack-index {
+  font-size: 0.6rem;
+  color: var(--accent);
+}
+
+.stack-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.stack-note {
+  font-size: 0.73rem;
+  color: var(--ink-muted);
+}
+
+/* ---------- About ---------- */
+
+.section-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+  gap: clamp(32px, 5vw, 72px);
+}
+
+.prose {
+  display: grid;
+  gap: 16px;
+  max-width: 60ch;
+  margin-top: 24px;
+  font-size: clamp(0.97rem, 1.1vw, 1.04rem);
+  color: var(--ink-soft);
+}
+
+.prose p:first-child {
+  color: var(--ink);
+}
+
+.glance {
+  align-self: start;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  corner-shape: squircle;
+  background: var(--paper-raised);
+}
+
+.glance-list {
+  margin-top: 12px;
+}
+
+.glance-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 11px;
+  border-top: 1px solid var(--line);
+  font-size: 0.87rem;
+}
+
+.glance-row:first-child {
+  border-top: 0;
+}
+
+.glance-row dt {
+  color: var(--ink-muted);
+}
+
+.glance-row dd {
+  text-align: right;
+}
+
+.glance-note {
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.79rem;
+  color: var(--ink-muted);
+}
+
+/* ---------- Approach ---------- */
+
+.approach-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 16px;
+}
+
+.approach-lead {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  overflow: hidden;
+  padding: clamp(26px, 3.4vw, 42px);
+  border-radius: var(--radius-lg);
+  corner-shape: squircle;
+  background: var(--accent);
+  color: #fff;
+}
+
+.approach-lead::after {
+  content: '';
+  position: absolute;
+  right: -70px;
+  bottom: -110px;
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+}
+
+.approach-lead .mono {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.approach-lead .h2 {
+  margin-top: 14px;
+  max-width: 9ch;
+}
+
+.approach-lead-text {
+  position: relative;
+  z-index: 1;
+  max-width: 26ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.9vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+}
+
+.approach-body {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: clamp(26px, 3.4vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  corner-shape: squircle;
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+}
+
+.rules {
+  margin-top: 4px;
+}
+
+.rules li {
+  display: flex;
+  gap: 14px;
+  padding-block: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.rules .mono {
+  padding-top: 2px;
+  color: var(--accent);
+}
+
+/* ---------- Process ---------- */
+
+.section-head {
+  max-width: 720px;
+}
+
+.section-lede {
+  margin-top: 14px;
+  max-width: 56ch;
+  color: var(--ink-soft);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.process-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  corner-shape: squircle;
+  background: var(--paper-raised);
+  transition:
+    transform 0.4s var(--ease),
+    border-color 0.3s var(--ease);
+}
+
+.process-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+}
+
+.process-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.022em;
+}
+
+.process-card p {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.process-index {
+  color: var(--ink-muted);
+}
+
+.process-card--accent {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.process-card--accent p {
+  color: rgba(242, 239, 233, 0.72);
+}
+
+.process-card--accent .process-index {
+  color: rgba(242, 239, 233, 0.5);
+}
+
+.process-card--outline {
+  border-style: dashed;
+  background: transparent;
+}
+
+/* ---------- Projects ---------- */
+
+.project-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.55fr);
+  gap: clamp(24px, 4vw, 48px);
+  padding: clamp(24px, 3.4vw, 44px);
+  border: 1px solid rgba(20, 19, 17, 0.1);
+  border-radius: var(--radius-lg);
+  corner-shape: squircle;
+}
+
+.project-main {
+  min-width: 0;
+}
+
+.project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(20, 19, 17, 0.14);
+}
+
+.project-year {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(20, 19, 17, 0.55);
+}
+
+.project-name {
+  margin-top: 20px;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+}
+
+.project-kind {
+  margin-top: 8px;
+}
+
+.project-summary {
+  margin-top: 14px;
+  max-width: 58ch;
+  font-size: 0.96rem;
+  color: rgba(20, 19, 17, 0.74);
+  text-wrap: pretty;
+}
+
+.project-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 26px;
+  margin-top: 22px;
+}
+
+.project-features li {
+  position: relative;
+  padding: 9px 0 9px 18px;
+  border-top: 1px solid rgba(20, 19, 17, 0.11);
+  font-size: 0.83rem;
+  color: rgba(20, 19, 17, 0.76);
+}
+
+.project-features li::before {
+  content: '';
+  position: absolute;
+  top: 1.15em;
+  left: 0;
+  width: 8px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.project-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.project-monogram {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 10vw, 9rem);
+  font-weight: 600;
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+  color: rgba(20, 19, 17, 0.13);
+  user-select: none;
+}
+
+/* ---------- Skills ---------- */
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
+  margin-top: 34px;
+}
+
+.skill-group {
+  padding-block: 24px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+/* ---------- AI ---------- */
+
+.ai-band {
+  display: grid;
+  gap: 14px;
+  padding: clamp(28px, 4vw, 52px);
+  border-radius: var(--radius-lg);
+  corner-shape: squircle;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.eyebrow--invert {
+  color: rgba(242, 239, 233, 0.62);
+}
+
+.ai-band .h2 {
+  max-width: 14ch;
+}
+
+.ai-band-text {
+  max-width: 62ch;
+  color: rgba(242, 239, 233, 0.72);
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.ai-card {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  corner-shape: squircle;
+}
+
+.ai-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.ai-card p {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.ai-foot {
+  max-width: 60ch;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+}
+
+/* ---------- Contact ---------- */
+
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: start;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.contact-title {
+  max-width: 16ch;
+  margin-top: 18px;
+  font-size: clamp(2.3rem, 5vw, 4.3rem);
+}
+
+.contact-lede {
+  max-width: 44ch;
+  margin-top: 18px;
+  color: var(--ink-soft);
+}
+
+.contact-actions {
+  display: grid;
+  justify-items: start;
+  gap: 24px;
+  padding-top: 8px;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line-strong);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.3vw, 1.7rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  transition:
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+.contact-email:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.social-list {
+  width: 100%;
+}
+
+.social-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  transition: color 0.2s var(--ease);
+}
+
+.social-list a:hover {
+  color: var(--accent);
+}
+
+.social-list .mono {
+  font-size: 0.66rem;
+  color: var(--ink-muted);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 980px) {
+  .hero,
+  .section-grid,
+  .approach-grid,
+  .contact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-aside {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-side {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .project-stack {
+    justify-content: flex-start;
+  }
+
+  .ai-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .stack-strip-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .stack-list {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skill-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .contact-title {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-name-last {
+    padding-left: 0;
+  }
+
+  .hero-aside {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-mark {
+    aspect-ratio: 16 / 7;
+  }
+
+  .process-grid,
+  .ai-grid,
+  .project-features {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+</style>
