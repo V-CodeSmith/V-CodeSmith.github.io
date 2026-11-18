@@ -1,15 +1,15 @@
 <template>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" :href="`${meta.path}#main`" :aria-label="`${SITE.name} — ${dict.nav.about}`">
+      <a class="brand" :href="`${meta.path}#main`" :aria-label="`${dict.hero.fullName} — ${dict.nav.about}`">
         <span class="brand-mark" aria-hidden="true">{{ locale === 'fa' ? 'ا' : 'M' }}</span>
         <span class="brand-text">
-          <span class="brand-name">{{ SITE.name }}</span>
+          <span class="brand-name">{{ dict.hero.fullName }}</span>
           <span class="brand-role">{{ SITE.handle }} · {{ dict.seo.jobTitle }}</span>
         </span>
       </a>
 
-      <nav class="nav" :aria-label="dict.nav.about">
+      <nav class="nav" :aria-label="dict.nav.sections">
         <a v-for="link in links" :key="link.href" class="nav-link" :href="link.href">
           {{ link.label }}
         </a>
@@ -35,7 +35,7 @@
           </a>
         </div>
 
-        <a class="header-cta" :href="`${meta.path}#contact`">{{ dict.nav.getInTouch }}</a>
+        <a class="header-cta ripple" :href="`${meta.path}#contact`">{{ dict.nav.getInTouch }}</a>
       </div>
     </div>
   </header>
@@ -124,7 +124,7 @@ const links = computed(() => [
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 .nav-link {
@@ -162,53 +162,79 @@ const links = computed(() => [
   flex: none;
 }
 
+/* Material 3 segmented button for the language switch */
+
 .lang-switch {
   display: inline-flex;
   align-items: center;
   gap: 2px;
   padding: 3px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--md-outline-variant);
   border-radius: var(--radius-pill);
-  background: var(--paper-raised);
+  background: var(--md-surface-container-lowest);
+  box-shadow: var(--md-elevation-1);
 }
 
 .lang-link {
-  padding: 5px 9px;
+  padding: 5px 11px;
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.06em;
-  color: var(--ink-muted);
+  color: var(--md-on-surface-variant);
   transition:
-    background-color 0.2s var(--ease),
-    color 0.2s var(--ease);
+    background-color 0.2s var(--md-motion-standard),
+    color 0.2s var(--md-motion-standard);
 }
 
 .lang-link:hover {
-  color: var(--ink);
+  background: var(--md-surface-container-high);
+  color: var(--md-on-surface);
 }
 
 .lang-link.is-active {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--md-secondary-container);
+  color: var(--md-on-secondary-container);
+  font-weight: 600;
 }
 
 .header-cta {
+  position: relative;
   padding: 9px 16px;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--md-outline);
   border-radius: var(--radius-pill);
   font-size: 0.84rem;
   font-weight: 500;
+  overflow: hidden;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
   transition:
-    background-color 0.25s var(--ease),
-    color 0.25s var(--ease),
-    border-color 0.25s var(--ease);
+    background-color 0.2s var(--md-motion-standard),
+    border-color 0.2s var(--md-motion-standard),
+    color 0.2s var(--md-motion-standard);
+}
+
+.header-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s var(--md-motion-standard);
+}
+
+.header-cta:hover::before {
+  opacity: var(--md-state-hover);
+}
+
+.header-cta:focus-visible::before {
+  opacity: var(--md-state-focus);
 }
 
 .header-cta:hover {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--paper);
+  background: var(--md-surface-container-lowest);
+  border-color: var(--md-on-surface);
 }
 
 @media (max-width: 900px) {

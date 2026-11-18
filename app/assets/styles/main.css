@@ -32,6 +32,42 @@
   --section-y: clamp(56px, 8vw, 104px);
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---------- Material 3 layer ---------- */
+  /* Colour roles, elevation, state layers and shape scale from Material 3,
+     mapped onto the paper palette so the page keeps its own character. */
+  --md-primary: #2f3bff;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #e4e6ff;
+  --md-on-primary-container: #0b1170;
+  --md-secondary-container: #e9e5dd;
+  --md-on-secondary-container: #2b2720;
+  --md-surface: #f2efe9;
+  --md-surface-dim: #e9e5dd;
+  --md-surface-container-lowest: #fdfbf7;
+  --md-surface-container: #faf8f4;
+  --md-surface-container-high: #efece5;
+  --md-on-surface: #141311;
+  --md-on-surface-variant: #4f4c45;
+  --md-outline: #c7c1b5;
+  --md-outline-variant: #ded9cf;
+
+  --md-elevation-1: 0 1px 2px rgba(20, 19, 17, 0.1), 0 1px 3px 1px rgba(20, 19, 17, 0.06);
+  --md-elevation-2: 0 1px 2px rgba(20, 19, 17, 0.1), 0 2px 6px 2px rgba(20, 19, 17, 0.08);
+  --md-elevation-3: 0 1px 3px rgba(20, 19, 17, 0.12), 0 4px 8px 3px rgba(20, 19, 17, 0.08);
+
+  --md-state-hover: 0.08;
+  --md-state-focus: 0.1;
+  --md-state-press: 0.12;
+
+  --md-motion-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-motion-emphasized: cubic-bezier(0.05, 0.7, 0.1, 1);
+
+  --md-shape-xs: 4px;
+  --md-shape-sm: 8px;
+  --md-shape-md: 12px;
+  --md-shape-lg: 16px;
+  --md-shape-xl: 28px;
 }
 
 *,
@@ -142,7 +178,7 @@ button {
 .skip {
   position: fixed;
   top: 12px;
-  left: 12px;
+  inset-inline-start: 12px;
   z-index: 1000;
   padding: 10px 16px;
   border-radius: var(--radius-pill);
@@ -217,7 +253,10 @@ button {
 
 /* ---------- Controls ---------- */
 
+/* Material 3 filled / outlined / tonal buttons: state layer, elevation, ripple. */
+
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -228,43 +267,92 @@ button {
   font-weight: 500;
   letter-spacing: -0.01em;
   cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
   transition:
-    transform 0.35s var(--ease),
-    background-color 0.25s var(--ease),
-    border-color 0.25s var(--ease),
-    color 0.25s var(--ease);
+    box-shadow 0.25s var(--md-motion-standard),
+    background-color 0.25s var(--md-motion-standard),
+    border-color 0.25s var(--md-motion-standard),
+    color 0.25s var(--md-motion-standard);
 }
 
-.btn:hover {
-  transform: translateY(-2px);
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s var(--md-motion-standard);
+}
+
+.btn:hover::before {
+  opacity: var(--md-state-hover);
+}
+
+.btn:focus-visible::before {
+  opacity: var(--md-state-focus);
+}
+
+.btn:active::before {
+  opacity: var(--md-state-press);
 }
 
 .btn--primary {
-  background: var(--accent);
-  color: #fff;
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  box-shadow: var(--md-elevation-1);
 }
 
 .btn--primary:hover {
-  background: var(--accent-deep);
+  background: var(--md-primary);
+  box-shadow: var(--md-elevation-2);
 }
 
 .btn--ghost {
-  border-color: var(--line-strong);
-  color: var(--ink);
+  border-color: var(--md-outline);
+  color: var(--md-on-surface);
 }
 
 .btn--ghost:hover {
-  border-color: var(--ink);
-  background: var(--paper-raised);
+  border-color: var(--md-on-surface);
+  background: var(--md-surface-container-lowest);
 }
 
 .btn--dark {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--md-on-surface);
+  color: var(--md-surface);
+  box-shadow: var(--md-elevation-1);
 }
 
 .btn--dark:hover {
-  background: var(--accent);
+  background: var(--md-on-surface);
+  box-shadow: var(--md-elevation-2);
+}
+
+/* Material ripple: one delegated listener in PortfolioPage.vue feeds this. */
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.2;
+  transform: scale(0);
+  pointer-events: none;
+  animation: md-ripple 0.55s var(--md-motion-standard) forwards;
+}
+
+@keyframes md-ripple {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
 
 .pill {
@@ -283,9 +371,10 @@ button {
 .chip {
   display: inline-flex;
   align-items: center;
+  min-height: 30px;
   padding: 6px 12px;
-  border: 1px solid rgba(20, 19, 17, 0.14);
-  border-radius: var(--radius-pill);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-shape-sm);
   font-size: 0.78rem;
   letter-spacing: -0.005em;
   color: var(--ink-soft);

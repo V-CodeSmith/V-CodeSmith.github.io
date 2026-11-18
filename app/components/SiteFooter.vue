@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <p class="footer-name">{{ SITE.name }}</p>
+        <p class="footer-name">{{ dict.hero.fullName }}</p>
         <p class="mono mono--muted">{{ SITE.handle }} · {{ dict.about.glance[0]?.value }}</p>
       </div>
 
@@ -13,7 +13,7 @@
         <a :href="SITE.github" target="_blank" rel="noopener noreferrer">{{ dict.footer.github }}</a>
       </nav>
 
-      <p class="footer-meta mono">© 2026 {{ SITE.name }} · {{ dict.footer.built }}</p>
+      <p class="footer-meta mono">© 2026 {{ dict.hero.fullName }} · {{ dict.footer.built }}</p>
     </div>
   </footer>
 </template>

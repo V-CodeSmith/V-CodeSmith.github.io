@@ -21,18 +21,18 @@
           <h1 class="hero-name display">
             {{ dict.hero.firstName }}
             <span class="hero-name-last">
-              {{ dict.hero.lastName }}<span class="dot-accent">.</span>
+              {{ accentHeadline(dict.hero.lastName) }}<span class="dot-accent">.</span>
             </span>
           </h1>
 
           <p class="hero-lede">{{ dict.hero.lede }}</p>
 
           <div class="hero-actions">
-            <a class="btn btn--primary" :href="`${meta.path}#contact`">
+            <a class="btn btn--primary ripple" :href="`${meta.path}#contact`">
               {{ dict.hero.primaryCta }}
             </a>
             <a
-              class="btn btn--ghost"
+              class="btn btn--ghost ripple"
               :href="SITE.github"
               target="_blank"
               rel="noopener noreferrer"
@@ -191,7 +191,7 @@
                 <a
                   v-for="link in project.links"
                   :key="link.href"
-                  class="btn btn--dark"
+                  class="btn btn--dark ripple"
                   :href="link.href"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -244,7 +244,7 @@
             {{ dict.ai.eyebrow }}
           </p>
           <h2 class="h2 display">
-            {{ dict.ai.heading }}<span class="dot-accent">.</span>
+            {{ accentHeadline(dict.ai.heading) }}<span class="dot-accent">.</span>
           </h2>
           <p class="ai-band-text">{{ dict.ai.lede }}</p>
         </div>
@@ -274,13 +274,13 @@
               {{ dict.contact.eyebrow }}
             </p>
             <h2 class="contact-title display">
-              {{ dict.contact.heading }}<span class="dot-accent">.</span>
+              {{ accentHeadline(dict.contact.heading) }}<span class="dot-accent">.</span>
             </h2>
             <p class="contact-lede">{{ dict.contact.lede }}</p>
           </div>
 
           <div class="contact-actions">
-            <a class="contact-email" :href="`mailto:${CONTACT.email}`">
+            <a class="contact-email ripple" :href="`mailto:${CONTACT.email}`">
               {{ CONTACT.email }}
               <span aria-hidden="true">↗</span>
             </a>
@@ -341,6 +341,27 @@ const process = PROCESS_TONES.map((tone, index) => ({
 
 const marqueeWords = [...dict.stack.marquee, ...dict.stack.marquee]
 
+/* Headings already carry their own full stop: never add a second accent dot. */
+function accentHeadline(text: string) {
+  return text.replace(/[.۔]+$/, '')
+}
+
+/* Material 3 ripple: one delegated listener instead of per-element handlers. */
+function startRipple(event: PointerEvent) {
+  const target = (event.target as HTMLElement | null)?.closest<HTMLElement>('.ripple')
+  if (!target) return
+  const rect = target.getBoundingClientRect()
+  const size = Math.max(rect.width, rect.height) * 2
+  const wave = document.createElement('span')
+  wave.className = 'ripple-wave'
+  wave.style.width = `${size}px`
+  wave.style.height = `${size}px`
+  wave.style.left = `${event.clientX - rect.left - size / 2}px`
+  wave.style.top = `${event.clientY - rect.top - size / 2}px`
+  target.appendChild(wave)
+  wave.addEventListener('animationend', () => wave.remove())
+}
+
 /* Scroll progress */
 const progress = ref(0)
 
@@ -378,6 +399,7 @@ onMounted(() => {
   onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', onScroll)
+  document.addEventListener('pointerdown', startRipple)
   tick()
   clockTimer = setInterval(tick, 30000)
 })
@@ -385,6 +407,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', onScroll)
+  document.removeEventListener('pointerdown', startRipple)
   if (clockTimer) clearInterval(clockTimer)
 })
 </script>
