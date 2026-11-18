@@ -1,5 +1,7 @@
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/vazirmatn';
+@import './page.css';
 
 :root {
   /* Canvas: warm paper, one ink, one electric accent */

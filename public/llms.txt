@@ -41,5 +41,6 @@ He works remote-first from Ardabil, Iran, alongside a small product team, and ta
 
 ## Optional
 
+- [Persian version](https://v-codesmith.github.io/fa): the same portfolio in Persian, RTL layout, Persian structured data.
 - [Sitemap](https://v-codesmith.github.io/sitemap.xml)
 - [Structured data](https://v-codesmith.github.io/): Person, Organization, WebSite, ProfilePage and BreadcrumbList JSON-LD are embedded in the homepage.

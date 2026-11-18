@@ -3,23 +3,26 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <p class="footer-name">{{ SITE.name }}</p>
-        <p class="mono mono--muted">{{ SITE.handle }} · {{ SITE.city }}, Iran</p>
+        <p class="mono mono--muted">{{ SITE.handle }} · {{ dict.about.glance[0]?.value }}</p>
       </div>
 
-      <nav class="footer-links" aria-label="Site files">
-        <a href="/humans.txt">humans.txt</a>
-        <a href="/llms.txt">llms.txt</a>
-        <a href="/sitemap.xml">sitemap.xml</a>
-        <a :href="SITE.github" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <nav class="footer-links" :aria-label="dict.footer.filesLabel">
+        <a href="/humans.txt">{{ dict.footer.humans }}</a>
+        <a href="/llms.txt">{{ dict.footer.llms }}</a>
+        <a href="/sitemap.xml">{{ dict.footer.sitemap }}</a>
+        <a :href="SITE.github" target="_blank" rel="noopener noreferrer">{{ dict.footer.github }}</a>
       </nav>
 
-      <p class="footer-meta mono">© 2026 {{ SITE.name }} · Built with Nuxt 4</p>
+      <p class="footer-meta mono">© 2026 {{ SITE.name }} · {{ dict.footer.built }}</p>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
 import { SITE } from '~/constants/seo'
+import type { Dictionary } from '~/i18n'
+
+const { dict } = defineProps<{ dict: Dictionary }>()
 </script>
 
 <style scoped>

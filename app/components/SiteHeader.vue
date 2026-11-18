@@ -1,34 +1,63 @@
 <template>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#main" aria-label="Mohammad Azhdari — back to top">
-        <span class="brand-mark" aria-hidden="true">M</span>
+      <a class="brand" :href="`${meta.path}#main`" :aria-label="`${SITE.name} — ${dict.nav.about}`">
+        <span class="brand-mark" aria-hidden="true">{{ locale === 'fa' ? 'ا' : 'M' }}</span>
         <span class="brand-text">
           <span class="brand-name">{{ SITE.name }}</span>
-          <span class="brand-role">{{ SITE.handle }} · fullstack</span>
+          <span class="brand-role">{{ SITE.handle }} · {{ dict.seo.jobTitle }}</span>
         </span>
       </a>
 
-      <nav class="nav" aria-label="Sections">
+      <nav class="nav" :aria-label="dict.nav.about">
         <a v-for="link in links" :key="link.href" class="nav-link" :href="link.href">
           {{ link.label }}
         </a>
       </nav>
 
-      <a class="header-cta" href="#contact">Get in touch</a>
+      <div class="header-actions">
+        <div class="lang-switch" role="group" :aria-label="dict.nav.switchLabel">
+          <a
+            href="/"
+            class="lang-link"
+            :class="{ 'is-active': locale === 'en' }"
+            :aria-current="locale === 'en' ? 'page' : undefined"
+          >
+            EN
+          </a>
+          <a
+            href="/fa"
+            class="lang-link"
+            :class="{ 'is-active': locale === 'fa' }"
+            :aria-current="locale === 'fa' ? 'page' : undefined"
+          >
+            فا
+          </a>
+        </div>
+
+        <a class="header-cta" :href="`${meta.path}#contact`">{{ dict.nav.getInTouch }}</a>
+      </div>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
 import { SITE } from '~/constants/seo'
+import { LOCALE_META, type Dictionary, type LocaleCode } from '~/i18n'
 
-const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Stack', href: '#stack' },
-  { label: 'AI', href: '#ai' }
-]
+const { locale, dict } = defineProps<{
+  locale: LocaleCode
+  dict: Dictionary
+}>()
+
+const meta = computed(() => LOCALE_META[locale])
+
+const links = computed(() => [
+  { label: dict.nav.about, href: `${meta.value.path}#about` },
+  { label: dict.nav.projects, href: `${meta.value.path}#projects` },
+  { label: dict.nav.stack, href: `${meta.value.path}#stack` },
+  { label: dict.nav.ai, href: `${meta.value.path}#ai` }
+])
 </script>
 
 <style scoped>
@@ -94,7 +123,7 @@ const links = [
 .nav {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 24px;
   margin-left: auto;
 }
 
@@ -126,8 +155,45 @@ const links = [
   transform: scaleX(1);
 }
 
-.header-cta {
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   flex: none;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper-raised);
+}
+
+.lang-link {
+  padding: 5px 9px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.lang-link:hover {
+  color: var(--ink);
+}
+
+.lang-link.is-active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.header-cta {
   padding: 9px 16px;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-pill);
@@ -145,18 +211,22 @@ const links = [
   color: var(--paper);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .nav {
     display: none;
   }
 
-  .header-cta {
+  .header-actions {
     margin-left: auto;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 620px) {
   .brand-role {
+    display: none;
+  }
+
+  .header-cta {
     display: none;
   }
 }
