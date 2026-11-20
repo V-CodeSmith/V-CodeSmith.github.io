@@ -1,5 +1,6 @@
 <template>
   <footer class="site-footer">
+    <div class="merlon footer-merlon" aria-hidden="true" />
     <div class="container footer-inner">
       <div class="footer-brand">
         <p class="footer-name">{{ dict.hero.fullName }}</p>
@@ -27,8 +28,19 @@ const { dict } = defineProps<{ dict: Dictionary }>()
 
 <style scoped>
 .site-footer {
-  border-top: 1px solid var(--line);
-  padding-block: 40px 48px;
+  position: relative;
+  margin-top: clamp(24px, 5vw, 56px);
+  border-top: 1px solid var(--gold-line);
+  padding-block: 44px 52px;
+  background: linear-gradient(180deg, rgba(7, 15, 24, 0), var(--lapis-1000) 55%);
+}
+
+.footer-merlon {
+  position: absolute;
+  inset-inline: 0;
+  top: -13px;
+  transform: scaleY(-1);
+  pointer-events: none;
 }
 
 .footer-inner {
@@ -41,21 +53,27 @@ const { dict } = defineProps<{ dict: Dictionary }>()
 
 .footer-brand {
   display: grid;
-  gap: 6px;
+  gap: 7px;
 }
 
 .footer-name {
   font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: -0.025em;
+  font-size: 1.22rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.footer-brand .mono {
+  color: var(--gold);
+  opacity: 0.72;
 }
 
 .footer-links {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  font-size: 0.83rem;
+  font-size: 0.8rem;
 }
 
 .footer-links a {
@@ -64,14 +82,15 @@ const { dict } = defineProps<{ dict: Dictionary }>()
 }
 
 .footer-links a:hover {
-  color: var(--accent);
+  color: var(--gold);
 }
 
 .footer-meta {
   flex-basis: 100%;
   padding-top: 18px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--gold-line);
   color: var(--ink-muted);
-  font-size: 0.66rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
 }
 </style>

@@ -10,6 +10,48 @@
 
     <main id="main">
       <section ref="heroEl" class="hero container" @pointermove="onPointerMove">
+        <div class="hero-relief" aria-hidden="true">
+          <svg viewBox="0 0 320 320" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+            <defs>
+              <path id="hero-petal" d="M160 104 C 174 78 176 46 160 22 C 144 46 146 78 160 104 Z" />
+              <circle id="hero-boss" cx="160" cy="40" r="2.4" />
+            </defs>
+            <circle cx="160" cy="160" r="152" />
+            <circle cx="160" cy="160" r="146" />
+            <circle cx="160" cy="160" r="58" />
+            <circle cx="160" cy="160" r="50" />
+            <g>
+            <use href="#hero-petal" transform="rotate(0 160 160)" />
+            <use href="#hero-petal" transform="rotate(30 160 160)" />
+            <use href="#hero-petal" transform="rotate(60 160 160)" />
+            <use href="#hero-petal" transform="rotate(90 160 160)" />
+            <use href="#hero-petal" transform="rotate(120 160 160)" />
+            <use href="#hero-petal" transform="rotate(150 160 160)" />
+            <use href="#hero-petal" transform="rotate(180 160 160)" />
+            <use href="#hero-petal" transform="rotate(210 160 160)" />
+            <use href="#hero-petal" transform="rotate(240 160 160)" />
+            <use href="#hero-petal" transform="rotate(270 160 160)" />
+            <use href="#hero-petal" transform="rotate(300 160 160)" />
+            <use href="#hero-petal" transform="rotate(330 160 160)" />
+            </g>
+            <g>
+            <use href="#hero-boss" transform="rotate(15 160 160)" />
+            <use href="#hero-boss" transform="rotate(45 160 160)" />
+            <use href="#hero-boss" transform="rotate(75 160 160)" />
+            <use href="#hero-boss" transform="rotate(105 160 160)" />
+            <use href="#hero-boss" transform="rotate(135 160 160)" />
+            <use href="#hero-boss" transform="rotate(165 160 160)" />
+            <use href="#hero-boss" transform="rotate(195 160 160)" />
+            <use href="#hero-boss" transform="rotate(225 160 160)" />
+            <use href="#hero-boss" transform="rotate(255 160 160)" />
+            <use href="#hero-boss" transform="rotate(285 160 160)" />
+            <use href="#hero-boss" transform="rotate(315 160 160)" />
+            <use href="#hero-boss" transform="rotate(345 160 160)" />
+            </g>
+            <circle cx="160" cy="160" r="13" />
+          </svg>
+        </div>
+
         <div class="hero-spotlight" aria-hidden="true" />
 
         <div class="hero-copy" data-reveal>
@@ -54,7 +96,18 @@
           </div>
 
           <div class="hero-mark" aria-hidden="true">
-            <span class="hero-mark-glyph">{{ dict.hero.mark }}</span>
+            <svg
+              class="hero-mark-star"
+              viewBox="0 0 120 100"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linejoin="round"
+            >
+              <polygon class="kaviani-rays" points="60 4 63.8 40.8 79.8 30.2 69.2 46.2 106 50 69.2 53.8 79.8 69.8 63.8 59.2 60 96 56.2 59.2 40.2 69.8 50.8 53.8 14 50 50.8 46.2 40.2 30.2 56.2 40.8" />
+              <circle class="kaviani-ring" cx="60" cy="50" r="7.5" />
+              <path class="kaviani-jewel" d="M60 42.4 L67.6 50 L60 57.6 L52.4 50 Z" />
+            </svg>
           </div>
         </aside>
       </section>
@@ -170,7 +223,7 @@
             v-for="(project, index) in projects"
             :key="project.id"
             class="project"
-            :style="{ background: project.tint }"
+            :style="{ '--tint': project.tint }"
             data-reveal
           >
             <div class="project-main">

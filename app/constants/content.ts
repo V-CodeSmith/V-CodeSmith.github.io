@@ -24,7 +24,7 @@ export const PROJECTS: Project[] = [
     stack: ['Vue 3', 'Laravel', 'Blade'],
     links: [{ href: 'https://karanim.ir/' }],
     monogram: 'K',
-    tint: '#e5e7f4'
+    tint: '#4a7bb5'
   },
   {
     id: 'scan-business',
@@ -33,7 +33,7 @@ export const PROJECTS: Project[] = [
     stack: ['Vue 3', 'Laravel'],
     links: [{ href: 'https://scanbusiness.ir/' }],
     monogram: 'S',
-    tint: '#ede9dc'
+    tint: '#c19a4e'
   },
   {
     id: 'nigc',
@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
       { href: 'https://es.nigc-ar.ir/pwa2' }
     ],
     monogram: 'N',
-    tint: '#e2e9f1'
+    tint: '#4f8fb0'
   },
   {
     id: 'cafe-mahour',
@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
     stack: ['Nuxt 3'],
     links: [],
     monogram: 'C',
-    tint: '#efe4d5'
+    tint: '#c1684c'
   },
   {
     id: 'baam',
@@ -63,7 +63,7 @@ export const PROJECTS: Project[] = [
     stack: ['Nuxt 4'],
     links: [],
     monogram: 'B',
-    tint: '#e5e9e1'
+    tint: '#3f8f6b'
   },
   {
     id: 'asayroom',
@@ -72,7 +72,7 @@ export const PROJECTS: Project[] = [
     stack: ['Vue 3', 'Nuxt 4'],
     links: [{ href: 'https://asayroom.ir' }],
     monogram: 'A',
-    tint: '#e6e4f7'
+    tint: '#7a6aa8'
   }
 ]
 

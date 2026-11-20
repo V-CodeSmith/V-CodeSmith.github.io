@@ -1,5 +1,9 @@
 # Portfolio — Mohammad Azhdari (V-CodeSmith)
 
+**Mohammad Azhdari** (محمد اژدری), online as **V-CodeSmith**, is a fullstack
+developer from Ardabil, Iran — Vue 3 and Nuxt 4 on the front, Laravel and PHP
+behind. This repository is his live portfolio: <https://v-codesmith.github.io>
+
 A bilingual portfolio in Nuxt 4: English at `/` and Persian at `/fa`, with an RTL
 layout and its own SEO and JSON-LD per language. Warm paper, one ink, one
 electric accent, oversized Bricolage type (Vazirmatn for Persian) and soft

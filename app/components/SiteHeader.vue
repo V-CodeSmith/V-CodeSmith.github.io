@@ -2,7 +2,25 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" :href="`${meta.path}#main`" :aria-label="`${dict.hero.fullName} — ${dict.nav.about}`">
-        <span class="brand-mark" aria-hidden="true">{{ locale === 'fa' ? 'ا' : 'M' }}</span>
+        <span class="brand-mark" aria-hidden="true">
+          <svg
+            class="brand-cypress"
+            viewBox="0 0 24 34"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M12 32C6.6 26 4.9 19.6 5.7 13.6 6.4 8.2 8.8 4.4 12 3c3.2 1.4 5.6 5.2 6.3 10.6.8 6-1 12.4-6.3 18.4Z"
+            />
+            <path d="M12 12.4c-2.4 1-3.9 3-4.3 5.9" />
+            <path d="M12 12.4c2.4 1 3.9 3 4.3 5.9" />
+            <path d="M12 19.6c-1.9.9-3 2.4-3.3 4.4" />
+            <path d="M12 19.6c1.9.9 3 2.4 3.3 4.4" />
+          </svg>
+        </span>
         <span class="brand-text">
           <span class="brand-name">{{ dict.hero.fullName }}</span>
           <span class="brand-role">{{ SITE.handle }} · {{ dict.seo.jobTitle }}</span>
@@ -38,6 +56,7 @@
         <a class="header-cta ripple" :href="`${meta.path}#contact`">{{ dict.nav.getInTouch }}</a>
       </div>
     </div>
+    <div class="merlon header-merlon" aria-hidden="true" />
   </header>
 </template>
 
@@ -65,10 +84,9 @@ const links = computed(() => [
   position: sticky;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid var(--line);
-  background: rgba(242, 239, 233, 0.82);
-  backdrop-filter: blur(14px) saturate(1.1);
-  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  background: rgba(7, 15, 24, 0.84);
+  backdrop-filter: blur(18px) saturate(1.05);
+  -webkit-backdrop-filter: blur(18px) saturate(1.05);
 }
 
 .header-inner {
@@ -81,55 +99,70 @@ const links = computed(() => [
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 12px;
   flex: none;
 }
 
+/* An engraved seal instead of an app avatar. */
 .brand-mark {
+  position: relative;
   display: grid;
   place-items: center;
-  width: 31px;
-  height: 31px;
-  border-radius: 9px;
-  corner-shape: squircle;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--gold-line-strong);
+  background: linear-gradient(158deg, rgba(217, 180, 108, 0.16), rgba(217, 180, 108, 0.02));
+  color: var(--gold);
+}
+
+/* Achaemenid cypress — the tree of freedom — inside the seal. */
+.brand-cypress {
+  position: relative;
+  z-index: 1;
+  width: 18px;
+  height: auto;
+}
+
+.brand-mark::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--gold-line);
 }
 
 .brand-text {
   display: grid;
-  gap: 1px;
+  gap: 2px;
   line-height: 1.15;
 }
 
 .brand-name {
-  font-size: 0.92rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.005em;
+  color: var(--ink);
 }
 
 .brand-role {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: var(--gold);
+  opacity: 0.78;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 26px;
   margin-inline-start: auto;
 }
 
 .nav-link {
   position: relative;
-  font-size: 0.87rem;
+  font-size: 0.82rem;
   color: var(--ink-soft);
   transition: color 0.2s var(--ease);
 }
@@ -138,17 +171,17 @@ const links = computed(() => [
   content: '';
   position: absolute;
   left: 0;
-  bottom: -5px;
+  bottom: -6px;
   width: 100%;
   height: 1px;
-  background: currentColor;
+  background: var(--gold);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s var(--ease);
 }
 
 .nav-link:hover {
-  color: var(--ink);
+  color: var(--gold);
 }
 
 .nav-link:hover::after {
@@ -158,60 +191,71 @@ const links = computed(() => [
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex: none;
 }
 
-/* Material 3 segmented button for the language switch */
-
+/* Two carved plaques: EN / فا */
 .lang-switch {
   display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  padding: 3px;
-  border: 1px solid var(--md-outline-variant);
-  border-radius: var(--radius-pill);
-  background: var(--md-surface-container-lowest);
-  box-shadow: var(--md-elevation-1);
+  align-items: stretch;
+  border: 1px solid var(--gold-line);
 }
 
 .lang-link {
-  padding: 5px 11px;
-  border-radius: var(--radius-pill);
+  padding: 6px 12px;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.06em;
-  color: var(--md-on-surface-variant);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
   transition:
-    background-color 0.2s var(--md-motion-standard),
-    color 0.2s var(--md-motion-standard);
+    background-color 0.2s var(--motion),
+    color 0.2s var(--motion);
+}
+
+.lang-link + .lang-link {
+  border-inline-start: 1px solid var(--gold-line);
 }
 
 .lang-link:hover {
-  background: var(--md-surface-container-high);
-  color: var(--md-on-surface);
+  color: var(--gold);
+  background: var(--gold-wash);
 }
 
 .lang-link.is-active {
-  background: var(--md-secondary-container);
-  color: var(--md-on-secondary-container);
+  background: var(--gold-wash);
+  color: var(--gold);
+  box-shadow: inset 0 -1px 0 var(--gold);
   font-weight: 600;
 }
 
 .header-cta {
+  --chamfer: 7px;
   position: relative;
+  display: inline-flex;
+  align-items: center;
   padding: 9px 16px;
-  border: 1px solid var(--md-outline);
-  border-radius: var(--radius-pill);
-  font-size: 0.84rem;
-  font-weight: 500;
+  border: 1px solid var(--gold-line-strong);
+  clip-path: polygon(
+    var(--chamfer) 0,
+    100% 0,
+    100% calc(100% - var(--chamfer)),
+    calc(100% - var(--chamfer)) 100%,
+    0 100%,
+    0 var(--chamfer)
+  );
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
   overflow: hidden;
   isolation: isolate;
   -webkit-tap-highlight-color: transparent;
   transition:
-    background-color 0.2s var(--md-motion-standard),
-    border-color 0.2s var(--md-motion-standard),
-    color 0.2s var(--md-motion-standard);
+    border-color 0.2s var(--motion),
+    color 0.2s var(--motion);
 }
 
 .header-cta::before {
@@ -221,20 +265,27 @@ const links = computed(() => [
   background: currentColor;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.15s var(--md-motion-standard);
+  transition: opacity 0.15s var(--motion);
 }
 
 .header-cta:hover::before {
-  opacity: var(--md-state-hover);
-}
-
-.header-cta:focus-visible::before {
-  opacity: var(--md-state-focus);
+  opacity: 0.12;
 }
 
 .header-cta:hover {
-  background: var(--md-surface-container-lowest);
-  border-color: var(--md-on-surface);
+  border-color: var(--gold);
+}
+
+.header-cta:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--turquoise);
+}
+
+.header-merlon {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -13px;
+  pointer-events: none;
 }
 
 @media (max-width: 900px) {
