@@ -56,6 +56,18 @@
         <a class="header-cta ripple" :href="`${meta.path}#contact`">{{ dict.nav.getInTouch }}</a>
       </div>
     </div>
+    <Teleport to="body">
+      <nav class="mobile-nav" :aria-label="dict.nav.sections">
+        <a v-for="link in links" :key="link.href" class="mobile-nav-link" :href="link.href">
+          <span class="mobile-nav-mark" aria-hidden="true" />
+          {{ link.label }}
+        </a>
+        <a class="mobile-nav-link mobile-nav-link--cta" :href="`${meta.path}#contact`">
+          <span class="mobile-nav-mark" aria-hidden="true" />
+          {{ dict.nav.getInTouch }}
+        </a>
+      </nav>
+    </Teleport>
     <div class="merlon header-merlon" aria-hidden="true" />
   </header>
 </template>
@@ -288,6 +300,10 @@ const links = computed(() => [
   pointer-events: none;
 }
 
+.mobile-nav {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .nav {
     display: none;
@@ -295,6 +311,97 @@ const links = computed(() => [
 
   .header-actions {
     margin-left: auto;
+  }
+
+  /* A thumb-reachable frieze of section plaques: the mobile tab bar. */
+  .mobile-nav {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 55;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 1px;
+    padding: 5px 6px calc(5px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--gold-line-strong);
+    background: rgba(6, 13, 21, 0.94);
+    backdrop-filter: blur(18px) saturate(1.05);
+    -webkit-backdrop-filter: blur(18px) saturate(1.05);
+  }
+
+  .mobile-nav-link {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 4px 2px;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    text-align: center;
+    color: var(--ink-soft);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav-mark {
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.5;
+  }
+
+  .mobile-nav-link--cta {
+    color: var(--gold);
+  }
+
+  .mobile-nav-link--cta .mobile-nav-mark {
+    background: var(--gold);
+    opacity: 0.9;
+  }
+
+  .mobile-nav-link:active .mobile-nav-mark {
+    background: var(--gold);
+    opacity: 1;
+  }
+
+  html[dir='rtl'] .mobile-nav-link {
+    letter-spacing: 0;
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    gap: 12px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand-cypress {
+    width: 17px;
+  }
+
+  .brand-name {
+    font-size: 0.94rem;
+  }
+
+  .brand-role {
+    font-size: 0.55rem;
+  }
+
+  .lang-link {
+    padding: 6px 10px;
   }
 }
 
@@ -305,6 +412,13 @@ const links = computed(() => [
 
   .header-cta {
     display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobile-nav-link {
+    font-size: 0.5rem;
+    letter-spacing: 0.04em;
   }
 }
 </style>

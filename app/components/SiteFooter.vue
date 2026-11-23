@@ -93,4 +93,40 @@ const { dict } = defineProps<{ dict: Dictionary }>()
   font-size: 0.62rem;
   letter-spacing: 0.14em;
 }
+
+@media (max-width: 900px) {
+  .site-footer {
+    padding-block: 34px calc(96px + env(safe-area-inset-bottom));
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer-name {
+    font-size: 1.1rem;
+  }
+
+  .footer-links {
+    width: 100%;
+    gap: 0;
+    border-top: 1px solid var(--gold-line);
+  }
+
+  .footer-links a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline-end: 18px;
+    font-size: 0.8rem;
+  }
+
+  .footer-meta {
+    padding-top: 14px;
+    font-size: 0.6rem;
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+  }
+}
 </style>
